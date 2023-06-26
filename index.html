@@ -7,6 +7,26 @@
     <title>Rain or Shine Forecast</title>
 </head>
 <body>
-    <script src="./assets/js/script.js"></script>   
+    <div class = "container">
+        <section class = "info-box">
+            <section class = "inputs">
+                <input type = "text" placeholder = "PLEASE ENTER CITY NAME" id = "enterCity">
+                <input type = "submit" value = "SUBMIT" id = "addCity">
+                <button placeholder = "submit" id = "addCity"></button>
+            </section>
+
+            <section class = "output">
+                <div class = "display">
+                    <h2 id = "displayCity"></h2>
+                    <p id = "date"></p>
+                    <p id = "gist"></p>
+                    <p id = "temperature"></p>
+                    <p id = "wind-speed"></p>
+                    <p id = "humidity"></p>
+                </div>
+            </section>
+        </section>
+    </div>
+    <script src="./assets/js/script.js"></script>       
 </body>
 </html>
