@@ -1,15 +1,10 @@
 var addCity = document.querySelector('#addCity');
 var displayCity = document.querySelector('#displayCity');
 var dateEl = document.querySelector("#date");
-
 var weatherUrl = 'https://api.openweathermap.org';
 var weatherKey = 'e58ac91e0a6a8f397405a4f6e3d97d37';
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-//function fahrenheit(val) {
-
-//    return (((val - 273) * 9 / 5) + 32).toFixed(2)
-//}
 
 function nextDay(days) {
     for (days[i] = dayjs(); i < 5; i++) {
@@ -18,16 +13,18 @@ function nextDay(days) {
 }
 
 
-
-
 function fetchWeather(location) {
     console.log("fetch weather location input")
     console.log(location)
     var { lat,lon } = location;
     console.log(lat)
     console.log(lon)
-
-    //fetch the 5 day forecast with the API
+    var newURL = weatherUrl + "/data/2.5/forecast?lat=" +location.lat+"&lon="+location.lon+"&appid="+weatherKey;
+    fetch(newURL)
+        .then(function (res) {
+            console.log(res)
+            return res.json();
+        })
     
 }
 
@@ -40,10 +37,10 @@ function formatToWeekDay(timestamp){
 function makeCurrentForecast(data){
     console.log("Making current forecast")
     var gist = document.querySelector('#gist');
-var temperature = document.querySelector('#temperature');
-var windspeed = document.querySelector('#windspeed');
-var humidity = document.querySelector('#humidity');
-console.log(humidity)
+    var temperature = document.querySelector('#temperature');
+    var windspeed = document.querySelector('#windspeed');
+    var humidity = document.querySelector('#humidity');
+    console.log(humidity)
     var name = data.name;
     var date = formatToWeekDay(data.dt)
     var nameGist = data.weather[0].description;
