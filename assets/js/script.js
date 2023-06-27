@@ -24,13 +24,13 @@ function fetchWeather(location) {
         .then(function (res) {
             return res.json();
         })
-        //.then(function (data){
-        //    console.log (data.list[0].dt_txt, "data.list[0]")
-        //    for (i=1; i<data.list.dt_txt.length; i+8) {
-        //        console.log(data.list.dt_txt[i])
-        //    }
+        .then(function (data){
+            console.log (data.list[0].dt_txt, "data.list[0]")
+            for (i=1; i<data.list.length; i+=8) {
+                console.log(data.list[i].dt_txt);
+            }
 
-        //})
+        })
     
 }
 
