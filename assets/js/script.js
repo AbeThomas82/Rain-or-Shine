@@ -22,15 +22,21 @@ function fetchWeather(location) {
     var newURL = weatherUrl + "/data/2.5/forecast?lat=" +location.lat+"&lon="+location.lon+"&appid="+weatherKey;
     fetch(newURL)
         .then(function (res) {
-            console.log(res)
             return res.json();
         })
+        //.then(function (data){
+        //    console.log (data.list[0].dt_txt, "data.list[0]")
+        //    for (i=1; i<data.list.dt_txt.length; i+8) {
+        //        console.log(data.list.dt_txt[i])
+        //    }
+
+        //})
     
 }
 
 function formatToWeekDay(timestamp){
     var date = dayjs.unix(timestamp);
-    const dayOfWeekString = date.format('dddd');
+    const dayOfWeekString = date.format('dddd, MMMM d');
     return dayOfWeekString
 }
 
