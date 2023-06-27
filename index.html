@@ -7,6 +7,7 @@
     <title>Rain or Shine Forecast</title>
 </head>
 <body>
+    <h1>Five-Day Forecast</h1>
     <div class = "container">
         <section class = "info-box">
             <section class = "inputs">
@@ -17,7 +18,7 @@
             </section>
 
             <section class = "output">
-                <div class = "display">
+                <div class = "display" id="current-forecast-container">
                     <h2 id = "displayCity"></h2>
                     <p id = "date"></p>
                     <p id = "gist"></p>
@@ -26,8 +27,13 @@
                     <p id = "humidity"></p>
                 </div>
             </section>
+
+            <article id="forecast-container">
+
+            </article>
         </section>
     </div>
-    <script src="./assets/js/script.js"></script>       
+    <script src="./assets/js/script.js"></script>      
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script> 
 </body>
 </html>

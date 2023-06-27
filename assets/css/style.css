@@ -8,6 +8,11 @@ body {
     background: #116396;
 }
 
+body h1 {
+    text-align: center;
+    color: lightgreen;
+}
+
 .container {
     width: fit-content;
     margin: 60px auto;
@@ -15,17 +20,18 @@ body {
 }
 
 .display {
-    display: flex;
-    flex-wrap: wrap;
+    
     background-color: azure;
     height: 45vh;
     margin: 0 9rem;
     margin: 50px auto;
     border-radius: 2px;
+    width: fit-content;
+    height: fit-content;
 }
 
 .display h2 {
-    background: lightgreen;
+    background: #116396;
     text-align: center;
     padding: 5px 0;
     color: white;
@@ -48,6 +54,14 @@ body {
 .display p span {
     color: #f4780d;
     font-size: 25px;
+}
+
+#forecast-container {
+    background: lightblue;
+    width:fit-content;
+    height:fit-content;
+    display:flex;
+    flex-direction: row;
 }
 
 .inputs {
