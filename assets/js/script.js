@@ -13,27 +13,41 @@ function fetchWeather(location) {
     console.log(lon)
 
     var newUrl = weatherUrl + "/data/2.5/forecast?lat=" +location.lat+"&lon="+location.lon+"&appid="+weatherKey+"&units=imperial";
-    
+    const futureDateHTML = document.getElementsByClassName('futureDate')
+    const futureGistHTML = document.getElementsByClassName('futureGist')
+    const futureHighHTML = document.getElementsByClassName('futureHigh')
+    const futureLowHTML = document.getElementsByClassName('futureLow')
+    const futureWindHTML = document.getElementsByClassName('futureWind')
+    const futureThickHTML = document.getElementsByClassName('futureThick')
+
+
     fetch(newUrl)
         .then(function (res) {
             return res.json();
         })
         .then(function (data){
             console.log (data.list[0], "data")
-            for (i=0; i<40; i+=8) {
+            for (i=0; i<5; i++) {
                 console.log(data.list[i].dt_txt);//Loop to extract weather data
                 var date = formatToWeekDay(data.list[i].clouds.dt);
-                var gist = data.list[i].weather;
+                var gist = data.list[i].weather[0].description;
                 var tempHigh = data.list[i].main.temp_max;
                 var tempLow = data.list[i].main.temp_min;
                 var humidity = data.list[i].main.humidity;
                 var windspeed = data.list[i].wind.speed;
                 console.log(formatToWeekDay(data.list[i].dt))
-                console.log(data.list[i].weather)
+                console.log(data.list[i].weather[0].description)
                 console.log(data.list[i].main.temp_max)
                 console.log(data.list[i].main.temp_min)
                 console.log(data.list[i].main.humidity)
                 console.log(data.list[i].wind.speed)
+                futureDateHTML[i].textContent = `${formatToWeekDay(data.list[i].dt)}`
+                futureGistHTML[i].textContent = `Conditions: ${data.list[i].weather[0].description}`
+                futureHighHTML[i].textContent = `High: ${data.list[i].main.temp_max}`
+                futureLowHTML[i].textContent = `Low: ${data.list[i].main.temp_min}`
+                futureWindHTML[i].textContent = `Winds: ${data.list[i].wind.speed} mph`
+                futureThickHTML[i].textContent = `Humidity: ${data.list[i].main.humidity}%`
+
 //              document.getElementById("date[i]").innerHTML = date;
 //              document.getElementById("gist[i]").innerHTML = gist;
 //              document.getElementById("tempHigh[i]").innerHTML = tempHigh;
