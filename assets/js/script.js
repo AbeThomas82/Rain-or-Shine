@@ -26,10 +26,10 @@ function fetchWeather(location) {
         })
         .then(function (data){
             console.log (data.list[0].dt_txt, "data.list[0]")
-            for (i=1; i<data.list.length; i+=8) {
+            for (i=0; i<40; i+=8) {
                 console.log(data.list[i].dt_txt);
             }
-
+            
         })
     
 }
@@ -57,12 +57,12 @@ function makeCurrentForecast(data){
     dateEl.innerHTML = `For <span>${date}<span>`
     gist.innerHTML = `Conditions: <span>${nameGist}<span>.`
     temperature.innerHTML = `Temperature of  <span>${temp}<span> degrees.`
-    windspeed.innerHTML = `Wind speeds are at <span>${wind}<span> m/h.`
+    windspeed.innerHTML = `Wind speeds are at <span>${wind}<span> mph.`
     humidity.innerHTML = `Humidity is at <span>${humid}<span> percent.`
 }
 
 function fetchCoords(cityName) {
-    var apiUrl = weatherUrl + "/data/2.5/weather?q=" + cityName + "&limit=5&appid=" + weatherKey + "&units=imperial";
+    var apiUrl = weatherUrl + "/data/2.5/weather?q=" + cityName + "&limit=1&appid=" + weatherKey + "&units=imperial";
     fetch(apiUrl)
         .then(function (res) {
             console.log(res)
