@@ -19,8 +19,10 @@ function fetchWeather(location) {
     var { lat,lon } = location;
     console.log(lat)
     console.log(lon)
-    var newURL = weatherUrl + "/data/2.5/forecast?lat=" +location.lat+"&lon="+location.lon+"&appid="+weatherKey;
-    fetch(newURL)
+
+    var newUrl = weatherUrl + "/data/2.5/forecast?lat=" +location.lat+"&lon="+location.lon+"&appid="+weatherKey;
+    
+    fetch(newUrl)
         .then(function (res) {
             return res.json();
         })
@@ -29,7 +31,6 @@ function fetchWeather(location) {
             for (i=0; i<40; i+=8) {
                 console.log(data.list[i].dt_txt);
             }
-            
         })
     
 }
