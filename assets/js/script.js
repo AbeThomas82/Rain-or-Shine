@@ -5,14 +5,6 @@ var weatherUrl = 'https://api.openweathermap.org';
 var weatherKey = 'e58ac91e0a6a8f397405a4f6e3d97d37';
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-
-function nextDay(days) {
-    for (days[i] = dayjs(); i < 5; i++) {
-        return days
-    }
-}
-
-
 function fetchWeather(location) {
     console.log("fetch weather location input")
     console.log(location)
@@ -30,22 +22,12 @@ function fetchWeather(location) {
             console.log (data.list[0].dt_txt, "data.list[0]")
             for (i=0; i<40; i+=8) {
                 console.log(data.list[i].dt_txt);
-                var gist = document.querySelector('#gist[i]');
-                var temperature = document.querySelector('#temperature[i]');
-                var windspeed = document.querySelector('#windspeed[i]');
-                var humidity = document.querySelector('#humidity[i]');
-                var name = data.name;
-                var date = formatToWeekDay(data.dt)
-                var nameGist = data.weather[i].description;
-                var temp = (data['main[i]']['temp[i]']).toFixed(0);
-                var wind = data['wind[i]']['speed[i]'];
-                var humid = data.main.humidity[i]
-                displayCity.innerHTML = `This is the weather of <span>${name[i]}<span>.`
-                dateEl.innerHTML = `For <span>${date[i]}<span>`
-                gist.innerHTML = `Conditions: <span>${nameGist[i]}<span>.`
-                temperature.innerHTML = `Temperature of  <span>${temp[i]}<span> degrees.`
-                windspeed.innerHTML = `Wind speeds are at <span>${wind[i]}<span> mph.`
-                humidity.innerHTML = `Humidity is at <span>${humid[i]}<span> percent.`            
+                var date = document.querySelector('date[i]');
+                var gist = document.querySelector('gist[i]');
+                var temp = document.querySelector('temperature[i]');
+                var windspeed = document.querySelector('windspeed[i]');
+                var humidity = document.querySelector('humidity[i]');
+
             }
         })
     
