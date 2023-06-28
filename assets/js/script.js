@@ -1,4 +1,4 @@
-var addCity = document.querySelector('#addCity');
+var addCity = document.querySelector('#addCity');//Targeting id values
 var displayCity = document.querySelector('#displayCity');
 var dateEl = document.querySelector("#date");
 var weatherUrl = 'https://api.openweathermap.org';
@@ -6,7 +6,7 @@ var weatherKey = 'e58ac91e0a6a8f397405a4f6e3d97d37';
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 function fetchWeather(location) {
-    console.log("fetch weather location input")
+    console.log("fetch weather location input")//Fetching code suggested by tutor
     console.log(location)
     var { lat,lon } = location;
     console.log(lat)
@@ -21,7 +21,7 @@ function fetchWeather(location) {
         .then(function (data){
             console.log (data.list[0].dt_txt, "data.list[0]")
             for (i=0; i<40; i+=8) {
-                console.log(data.list[i].dt_txt);
+                console.log(data.list[i].dt_txt);//Loop to extract weather data
                 var date = document.querySelector('date[i]');
                 var gist = document.querySelector('gist[i]');
                 var temp = document.querySelector('temperature[i]');
@@ -39,9 +39,9 @@ function formatToWeekDay(timestamp){
     return dayOfWeekString
 }
 
-function makeCurrentForecast(data){
+function makeCurrentForecast(data){//Get current weather
     console.log("Making current forecast")
-    var gist = document.querySelector('#gist');
+    var gist = document.querySelector('#gist');//Calling certain id values
     var temperature = document.querySelector('#temperature');
     var windspeed = document.querySelector('#windspeed');
     var humidity = document.querySelector('#humidity');
@@ -60,7 +60,7 @@ function makeCurrentForecast(data){
     humidity.innerHTML = `Humidity is at <span>${humid}<span> percent.`
 }
 
-function fetchCoords(cityName) {
+function fetchCoords(cityName) {//Get coordinates for the city
     var apiUrl = weatherUrl + "/data/2.5/weather?q=" + cityName + "&limit=1&appid=" + weatherKey + "&units=imperial";
     fetch(apiUrl)
         .then(function (res) {
@@ -69,20 +69,15 @@ function fetchCoords(cityName) {
         })
         .then(function (data) {
             console.log(data)
-            if(data && data.message === "city not found"){
+            if(data && data.message === "city not found"){//Preventing bad input
                 alert("Please enter a valid city")
                 return
             }
             let location = data.coord
             fetchWeather(location)
             makeCurrentForecast(data)
-            // create a div container where we want to put the result into
-            // then we can change the innerHTML or textContent of this new div container 
-            // to be equal to the data we want from our list
-            // then once we have done that we can append this new div container to one of our div
-            // containers on our webpage where we want the weather to show up              
         })
-        .catch(function (err) {
+        .catch(function (err) {//Catch errors
             console.error(err);
         });
 }
@@ -94,10 +89,10 @@ searchForm.addEventListener('submit', function (event) {
     var enterCity = document.querySelector('#enterCity')
     var cityInput = enterCity.value.trim()
     if (cityInput.length < 2) {
-        alert("please enter a valid city name")
+        alert("please enter a valid city name")//Alert to try again
         return
     }
-    fetchCoords(cityInput);
+    fetchCoords(cityInput);//Coordinates grabbed
     enterCity.value = '';
 });
 

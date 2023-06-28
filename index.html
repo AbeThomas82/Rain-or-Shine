@@ -8,17 +8,17 @@
 </head>
 <body>
     <h1>Forecast Dashboard</h1>
-    <div class = "container">
+    <div class = "container"><!--Container made for current weather-->
         <section class = "info-box">
             <section class = "inputs">
-                <form id = "search-form">
-                    <input type = "text" placeholder = "PLEASE ENTER CITY NAME" id = "enterCity">
-                    <input type = "submit" value = "SUBMIT" id = "addCity">
+                <form id = "search-form"><!--Inputs added to a form layout-->
+                    <input type = "text" placeholder = "PLEASE ENTER CITY NAME" id = "enterCity"><!--Placeholder prompt in box for city input-->
+                    <input type = "submit" value = "SUBMIT" id = "addCity"><!--Click event to search city-->
                 </form>
             </section>
 
             <section class = "output">
-                <div class = "display" id="current-forecast-container">
+                <div class = "display" id="current-forecast-container"><!--Container for future input-->
                     <h2 id = "displayCity"></h2>
                     <p id = "date"></p>
                     <p id = "gist"></p>
@@ -28,7 +28,7 @@
                 </div>
             </section>
             <h2>Future Weather</h2>
-            <article id="forecast-container">
+            <article id="forecast-container"><!--Container for future forecast-->
                 <div class = "Day-One">
                     <p id = "date0"></p>
                     <p id = "gist0"></p>
@@ -69,6 +69,6 @@
         </section>
     </div>
     <script src="./assets/js/script.js"></script>      
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script><!--DayJS summoned--> 
 </body>
 </html>
