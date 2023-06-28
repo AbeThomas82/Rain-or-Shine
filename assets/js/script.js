@@ -19,7 +19,7 @@ function fetchWeather(location) {
             return res.json();
         })
         .then(function (data){
-            console.log (data.list[0].dt_txt, "data.list[0]")
+            console.log (data.list[0], "data")
             for (i=0; i<40; i+=8) {
                 console.log(data.list[i].dt_txt);//Loop to extract weather data
                 var date = document.querySelector('date[i]');
@@ -27,6 +27,12 @@ function fetchWeather(location) {
                 var temp = document.querySelector('temperature[i]');
                 var windspeed = document.querySelector('windspeed[i]');
                 var humidity = document.querySelector('humidity[i]');
+                console.log(data.list[i].weather)
+                console.log(data.list[i].main.temp_max)
+                console.log(data.list[i].main.temp_min)
+                console.log(data.list[i].main.humidity)
+                console.log(data.list[i].wind)
+
 
             }
         })
@@ -55,7 +61,7 @@ function makeCurrentForecast(data){//Get current weather
     displayCity.innerHTML = `This is the weather of <span>${name}<span>.`
     dateEl.innerHTML = `For <span>${date}<span>`
     gist.innerHTML = `Conditions: <span>${nameGist}<span>.`
-    temperature.innerHTML = `Temperature of  <span>${temp}<span> degrees.`
+    temperature.innerHTML = `Temperature of <span>${temp}<span> degrees.`
     windspeed.innerHTML = `Wind speeds are at <span>${wind}<span> mph.`
     humidity.innerHTML = `Humidity is at <span>${humid}<span> percent.`
 }
