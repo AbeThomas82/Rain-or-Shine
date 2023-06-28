@@ -22,21 +22,32 @@ function fetchWeather(location) {
             console.log (data.list[0], "data")
             for (i=0; i<40; i+=8) {
                 console.log(data.list[i].dt_txt);//Loop to extract weather data
-                var date = document.querySelector('date[i]');
-                var gist = document.querySelector('gist[i]');
-                var temp = document.querySelector('temperature[i]');
-                var windspeed = document.querySelector('windspeed[i]');
-                var humidity = document.querySelector('humidity[i]');
+                var date = formatToWeekDay(data.list[i].clouds.dt);
+                var gist = data.list[i].weather;
+                var tempHigh = data.list[i].main.temp_max;
+                var tempLow = data.list[i].main.temp_min;
+                var humidity = data.list[i].main.humidity;
+                var windspeed = data.list[i].wind.speed;
+                console.log(formatToWeekDay(data.list[i].dt))
                 console.log(data.list[i].weather)
                 console.log(data.list[i].main.temp_max)
                 console.log(data.list[i].main.temp_min)
                 console.log(data.list[i].main.humidity)
-                console.log(data.list[i].wind)
+                console.log(data.list[i].wind.speed)
+//              document.getElementById("date[i]").innerHTML = date;
+//              document.getElementById("gist[i]").innerHTML = gist;
+//              document.getElementById("tempHigh[i]").innerHTML = tempHigh;
+//              document.getElementById("tempLow[i]").innerHTML = tempLow;
+//              document.getElementById("humidity[i]").innerHTML = humidity;
+//              document.getElementById("windspeed[i]").innerHTML = windspeed;
 
+
+
+                
+                
 
             }
         })
-    
 }
 
 function formatToWeekDay(timestamp){
