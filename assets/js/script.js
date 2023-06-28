@@ -12,7 +12,7 @@ function fetchWeather(location) {
     console.log(lat)
     console.log(lon)
 
-    var newUrl = weatherUrl + "/data/2.5/forecast?lat=" +location.lat+"&lon="+location.lon+"&appid="+weatherKey;
+    var newUrl = weatherUrl + "/data/2.5/forecast?lat=" +location.lat+"&lon="+location.lon+"&appid="+weatherKey+"&units=imperial";
     
     fetch(newUrl)
         .then(function (res) {
@@ -41,7 +41,7 @@ function fetchWeather(location) {
 
 function formatToWeekDay(timestamp){
     var date = dayjs.unix(timestamp);
-    const dayOfWeekString = date.format('dddd, MMMM d');
+    const dayOfWeekString = date.format('dddd, MMMM D');
     return dayOfWeekString
 }
 
