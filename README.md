@@ -27,7 +27,9 @@ GitPage: (https://abethomas82.github.io/Rain-or-Shine/)
 
 ## Screenshot
 
-![Current Forecast](./assets/Screenshot.png)
+![Start page with placeholder.](./assets/Screenshot.png)
+
+![Results for Houston.](./assets/Screenshot2.png)
 
 ## Credits
 
