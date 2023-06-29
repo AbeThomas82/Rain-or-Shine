@@ -5,6 +5,17 @@ var weatherUrl = 'https://api.openweathermap.org';
 var weatherKey = 'e58ac91e0a6a8f397405a4f6e3d97d37';
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
+
+
+function fetchIcon(data){
+    var iconUrl = "http://openweathermap.org/img/w/" + data + ".png"
+    fetch(iconUrl)
+        .then(function (res) {
+            return res.json();
+        })
+}
+
+
 function fetchWeather(location) {
     console.log("fetch weather location input")//Fetching code suggested by tutor
     console.log(location)
@@ -14,6 +25,7 @@ function fetchWeather(location) {
 
     var newUrl = weatherUrl + "/data/2.5/forecast?lat=" +location.lat+"&lon="+location.lon+"&appid="+weatherKey+"&units=imperial";
     const futureDateHTML = document.getElementsByClassName('futureDate')
+    const futureIconHTML = document.getElementsByClassName('futureIcon')
     const futureGistHTML = document.getElementsByClassName('futureGist')
     const futureHighHTML = document.getElementsByClassName('futureHigh')
     const futureLowHTML = document.getElementsByClassName('futureLow')
@@ -37,6 +49,7 @@ function fetchWeather(location) {
                 ];
                 console.log(selected[i].dt_txt);//Loop to extract weather data
                 var date = formatToWeekDay(selected[i].clouds.dt);
+                var icon = fetchIcon(selected[i].weather[0].icon);
                 var gist = selected[i].weather[0].description;
                 var tempHigh = selected[i].main.temp_max;
                 var tempLow = selected[i].main.temp_min;
@@ -49,22 +62,13 @@ function fetchWeather(location) {
                 console.log(selected[i].main.humidity)
                 console.log(selected[i].wind.speed)
                 futureDateHTML[i].textContent = `${formatToWeekDay(selected[i].dt)}`
+                futureIconHTML[i].textContent = `${fetchIcon(selected[i].weather[0].icon)}`
                 futureGistHTML[i].textContent = `Conditions: ${selected[i].weather[0].description}`
                 futureHighHTML[i].textContent = `High: ${selected[i].main.temp_max}`
                 futureLowHTML[i].textContent = `Low: ${selected[i].main.temp_min}`
                 futureWindHTML[i].textContent = `Winds: ${selected[i].wind.speed} mph`
                 futureThickHTML[i].textContent = `Humidity: ${selected[i].main.humidity}%`
-
-//              document.getElementById("date[i]").innerHTML = date;
-//              document.getElementById("gist[i]").innerHTML = gist;
-//              document.getElementById("tempHigh[i]").innerHTML = tempHigh;
-//              document.getElementById("tempLow[i]").innerHTML = tempLow;
-//              document.getElementById("humidity[i]").innerHTML = humidity;
-//              document.getElementById("windspeed[i]").innerHTML = windspeed;
-
-
-
-                
+              
                 
 
             }
@@ -80,18 +84,21 @@ function formatToWeekDay(timestamp){
 function makeCurrentForecast(data){//Get current weather
     console.log("Making current forecast")
     var gist = document.querySelector('#gist');//Calling certain id values
+    var icon = document.querySelector('#icon');
     var temperature = document.querySelector('#temperature');
     var windspeed = document.querySelector('#windspeed');
     var humidity = document.querySelector('#humidity');
     console.log(humidity)
     var name = data.name;
     var date = formatToWeekDay(data.dt)
+    var nameIcon = fetchIcon(data.weather[0].icon)
     var nameGist = data.weather[0].description;
     var temp = (data['main']['temp']).toFixed(0);
     var wind = data['wind']['speed'];
     var humid = data.main.humidity
     displayCity.innerHTML = `This is the weather of <span>${name}<span>.`
     dateEl.innerHTML = `For <span>${date}<span>`
+    icon.innerHTML = `${nameIcon}`
     gist.innerHTML = `Conditions: <span>${nameGist}<span>.`
     temperature.innerHTML = `Temperature of <span>${temp}<span> degrees.`
     windspeed.innerHTML = `Wind speeds are at <span>${wind}<span> mph.`
@@ -133,6 +140,3 @@ searchForm.addEventListener('submit', function (event) {
     fetchCoords(cityInput);//Coordinates grabbed
     enterCity.value = '';
 });
-
-
-//document.getElementById("current-forecast-container").innerHTML+= `<h2>This is text</h2><p class="outline">This is smaller text</p>`
