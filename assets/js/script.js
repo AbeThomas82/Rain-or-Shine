@@ -20,7 +20,7 @@ function fetchWeather(location) {
     const futureWindHTML = document.getElementsByClassName('futureWind')
     const futureThickHTML = document.getElementsByClassName('futureThick')
 
-
+    
     fetch(newUrl)
         .then(function (res) {
             return res.json();
@@ -28,25 +28,32 @@ function fetchWeather(location) {
         .then(function (data){
             console.log (data.list[0], "data")
             for (i=0; i<5; i++) {
-                console.log(data.list[i].dt_txt);//Loop to extract weather data
-                var date = formatToWeekDay(data.list[i].clouds.dt);
-                var gist = data.list[i].weather[0].description;
-                var tempHigh = data.list[i].main.temp_max;
-                var tempLow = data.list[i].main.temp_min;
-                var humidity = data.list[i].main.humidity;
-                var windspeed = data.list[i].wind.speed;
-                console.log(formatToWeekDay(data.list[i].dt))
-                console.log(data.list[i].weather[0].description)
-                console.log(data.list[i].main.temp_max)
-                console.log(data.list[i].main.temp_min)
-                console.log(data.list[i].main.humidity)
-                console.log(data.list[i].wind.speed)
-                futureDateHTML[i].textContent = `${formatToWeekDay(data.list[i].dt)}`
-                futureGistHTML[i].textContent = `Conditions: ${data.list[i].weather[0].description}`
-                futureHighHTML[i].textContent = `High: ${data.list[i].main.temp_max}`
-                futureLowHTML[i].textContent = `Low: ${data.list[i].main.temp_min}`
-                futureWindHTML[i].textContent = `Winds: ${data.list[i].wind.speed} mph`
-                futureThickHTML[i].textContent = `Humidity: ${data.list[i].main.humidity}%`
+                const selected = [
+                    data.list[0],
+                    data.list[8],
+                    data.list[16],
+                    data.list[24],
+                    data.list[32],
+                ];
+                console.log(selected[i].dt_txt);//Loop to extract weather data
+                var date = formatToWeekDay(selected[i].clouds.dt);
+                var gist = selected[i].weather[0].description;
+                var tempHigh = selected[i].main.temp_max;
+                var tempLow = selected[i].main.temp_min;
+                var humidity = selected[i].main.humidity;
+                var windspeed = selected[i].wind.speed;
+                console.log(formatToWeekDay(selected[i].dt))
+                console.log(selected[i].weather[0].description)
+                console.log(selected[i].main.temp_max)
+                console.log(selected[i].main.temp_min)
+                console.log(selected[i].main.humidity)
+                console.log(selected[i].wind.speed)
+                futureDateHTML[i].textContent = `${formatToWeekDay(selected[i].dt)}`
+                futureGistHTML[i].textContent = `Conditions: ${selected[i].weather[0].description}`
+                futureHighHTML[i].textContent = `High: ${selected[i].main.temp_max}`
+                futureLowHTML[i].textContent = `Low: ${selected[i].main.temp_min}`
+                futureWindHTML[i].textContent = `Winds: ${selected[i].wind.speed} mph`
+                futureThickHTML[i].textContent = `Humidity: ${selected[i].main.humidity}%`
 
 //              document.getElementById("date[i]").innerHTML = date;
 //              document.getElementById("gist[i]").innerHTML = gist;

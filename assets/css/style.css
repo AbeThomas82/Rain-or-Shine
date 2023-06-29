@@ -102,7 +102,8 @@ body h2 {
 }
 
 .output {
+    justify-content: center;
     color: lightgrey;
-    width: 400px;
+    width: auto;
     text-align: center;
 }
