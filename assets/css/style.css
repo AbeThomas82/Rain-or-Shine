@@ -18,6 +18,10 @@ body h2 {
     color:lightgreen;
 }
 
+.border {
+    border-right: 1px solid black;
+}
+
 .container {
     width: fit-content;
     margin: 60px auto;
@@ -66,6 +70,7 @@ body h2 {
     background-color: azure;
     width:fit-content;
     height:fit-content;
+    justify-content: space-evenly;
     display:flex;
     flex-direction: row;
 }
@@ -102,7 +107,7 @@ body h2 {
 }
 
 .output {
-    justify-content: center;
+    justify-content: space-between;
     color: lightgrey;
     width: auto;
     text-align: center;
