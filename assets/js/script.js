@@ -9,7 +9,7 @@ var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "S
 
 function fetchIcon(data){
     var iconUrl = "http://openweathermap.org/img/w/" + data + ".png"
-    return iconurl;
+    return iconUrl;
 }
 
 
@@ -59,7 +59,7 @@ function fetchWeather(location) {
                 console.log(selected[i].main.humidity)
                 console.log(selected[i].wind.speed)
                 futureDateHTML[i].textContent = `${formatToWeekDay(selected[i].dt)}`
-                futureIconHTML[i].textContent = `${fetchIcon(selected[i].weather[0].icon)}`
+                futureIconHTML[i].innerHTML = `<img src="${fetchIcon(selected[i].weather[0].icon)}">`
                 futureGistHTML[i].textContent = `Conditions: ${selected[i].weather[0].description}`
                 futureHighHTML[i].textContent = `High: ${selected[i].main.temp_max}`
                 futureLowHTML[i].textContent = `Low: ${selected[i].main.temp_min}`
@@ -95,7 +95,7 @@ function makeCurrentForecast(data){//Get current weather
     var humid = data.main.humidity
     displayCity.innerHTML = `This is the weather of <span>${name}<span>.`
     dateEl.innerHTML = `For <span>${date}<span>`
-    icon.innerHTML = `${nameIcon}`
+    icon.innerHTML = `<img src="${nameIcon}">`
     gist.innerHTML = `Conditions: <span>${nameGist}<span>.`
     temperature.innerHTML = `Temperature of <span>${temp}<span> degrees.`
     windspeed.innerHTML = `Wind speeds are at <span>${wind}<span> mph.`
