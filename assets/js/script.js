@@ -9,10 +9,7 @@ var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "S
 
 function fetchIcon(data){
     var iconUrl = "http://openweathermap.org/img/w/" + data + ".png"
-    fetch(iconUrl)
-        .then(function (res) {
-            return res.json();
-        })
+    return iconurl;
 }
 
 
